@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Image uploader</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+
+    <body style="background:black">
+        <div class="container">
+            <div class="py-5 text-center bg-secondary text-white">
+                <h1 class="mb-3">Upload Image</h2>
+                    <form action=" " method ="post" enctype="multipart/form-data">
+                         {% csrf_token %}
+                         {{form}}
+                         
+                         <input type="submit" class="btn btn-danger" value="upload">
+                         <label>Add Your Comment</label>
+                         <input type="text" name="com" />
+
+                    </form>
+                </div>
+                <div class="row">
+                    {% for x in img %}
+                      <div class="col=sm-4">
+                        <div class="card m-2">
+                            <img src="{{x.photo.url}} "  alt=" " class="card-img-top"  height="200px" width="200px">
+                       <div>
+                       
+                        <small class="text-muted">{{x.date}}</small>
+                       </div>
+                       {% for y in com %}
+                <input type="text" value={{y.text}} >
+             
+                {% endfor %}
+                       
+                        </div>
+                        
+                    </div>
+
+
+                    {% endfor %}
+                </div>
+
+                
+
+            </div>
+
+
+                    
+       
+    
+    </body>
+
